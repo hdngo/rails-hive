@@ -1,0 +1,43 @@
+<p>
+  <strong>Username:</strong>
+  <%= @bumblebee.username %>
+</p>
+
+<p>''
+  <strong>Full name:</strong>
+  <%= @bumblebee.first_name %> <%= @bumblebee.last_name %>
+</p>
+
+<h2>Photos</h2>
+<% @bumblebee.photos.each do |photo| %>
+  <div>
+    <img src=<%= photo.url %>>
+    <p><%= photo.caption %></p>
+  </div>
+<% end %>
+
+
+<h2>Add a photo:</h2>
+<%= form_for([@bumblebee, @bumblebee.photos.build]) do |f| %>
+  <p>
+    <%= f.label :uploader %><br>
+    <%= f.text_field :uploader %>
+  </p>
+  <p>
+    <%= f.label :url %><br>
+    <%= f.text_area :url %>
+  </p>
+  <p>
+    <%= f.label :caption %><br>
+    <%= f.text_area :caption %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Edit Profile', edit_bumblebee_path(@bumblebee) %>
+<%= link_to 'Home', controller: 'home' %>
+<%= link_to 'Peace out', controller: 'sessions', action: 'logout' %>
