@@ -3,3 +3,8 @@
   <p>Uploaded by: <%= @photo.uploader %> </p>
   <p><%= @photo.caption %></p>
 </div>
+
+
+
+<%= link_to 'Back', @photo.bumblebee %>
+<%= link_to 'Log out', controller: 'home' %>

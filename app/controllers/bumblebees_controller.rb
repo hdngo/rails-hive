@@ -1,5 +1,4 @@
 class BumblebeesController < ApplicationController
-  include Authentication
   def show
     @bumblebee = Bumblebee.find(params[:id])
   end

@@ -1,0 +1,19 @@
+<h1>Edit your photo</h1>
+
+<img src=<%= @photo.url %>>
+<%= form_for ([@bumblebee, @photo]), method: :patch  do |f| %>
+  <p>
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </p>
+
+  <p>
+    <%= f.label :caption %><br>
+    <%= f.text_field :caption %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', bumblebee_path(bumblebee_id: @photo.bumblebee.id) %>

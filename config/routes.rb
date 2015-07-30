@@ -1,20 +1,31 @@
 Rails.application.routes.draw do
 
-  get 'sessions/login'
 
-  post 'sessions/login'
+  get 'friends/index'
 
-  get 'sessions/logout'
+  get 'friends/destroy'
+
+  get 'friends/index'
+
+  get 'friends/destroy'
+
+  get 'login', to: 'sessions#login'
+
+  post 'login', to: 'sessions#login'
+
+  get 'logout', to: 'sessions#logout'
 
   get 'home/index'
 
-  get 'photos', to: 'photos#index'
+  get 'photos', to: 'photos#index', as: 'gallery'
+
   # make a route
 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
+  resources :friendrequests
 
   resources :bumblebees do
     resources :photos

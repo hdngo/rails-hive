@@ -13,6 +13,21 @@ class PhotosController < ApplicationController
     redirect_to bumblebee_path(@bumblebee)
   end
 
+  def edit
+    @bumblebee = Bumblebee.find(params[:bumblebee_id])
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @bumblebee = Bumblebee.find(params[:bumblebee_id])
+    @photo = Photo.find(params[:id])
+
+    if @photo.update(photo_params)
+      redirect_to bumblebee_photo_path(@bumblebee, @photo)
+    else
+      render 'edit'
+    end
+  end
 
   private
     def photo_params

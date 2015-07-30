@@ -3,16 +3,19 @@
   <%= @bumblebee.username %>
 </p>
 
-<p>''
+<p>
   <strong>Full name:</strong>
   <%= @bumblebee.first_name %> <%= @bumblebee.last_name %>
 </p>
+
+<p>current user is: <%= current_user.username%></p>
 
 <h2>Photos</h2>
 <% @bumblebee.photos.each do |photo| %>
   <div>
     <img src=<%= photo.url %>>
     <p><%= photo.caption %></p>
+    <%= link_to 'Edit', edit_bumblebee_photo_path(id: photo.id, bumblebee_id: photo.bumblebee.id) %>
   </div>
 <% end %>
 
